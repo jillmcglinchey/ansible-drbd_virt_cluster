@@ -1,3 +1,7 @@
+eno1:
+  address: 192.168.1.1
+  netmask: /30
+
 eno2:
   address: 192.168.1.2
   netmask: /30

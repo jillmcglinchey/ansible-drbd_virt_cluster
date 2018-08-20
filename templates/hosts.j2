@@ -1,18 +1,25 @@
-# {{ ansible_managed }}
+i# {{ ansible_managed }}
 127.0.0.1	localhost
-{{ ansible_default_ipv4.address }} {{ inventory_hostname }}
-{{ hostvars['virt-cl-drdb-0']['br0']['address'] }}	virt-cl-drbd-0
-{{ hostvars['virt-cl-drdb-1']['br0']['address'] }}	virt-cl-drbd-1
-{{ hostvars['virt-cl-drdb-0']['eno2']['address'] }}     virt-cl-drbd-data-0
-{{ hostvars['virt-cl-drdb-1']['eno2']['address'] }}	virt-cl-drbd-data-1
-{{ hostvars['virt-cl-drdb-0']['ipmi']['address'] }}	virt-cl-drbd-ipmi-0
-{{ hostvars['virt-cl-drdb-1']['ipmi']['address'] }}	virt-cl-drbd-ipmi-1
+127.0.1.1	{{ inventory_hostname }}
+# This hostname is what ansible uses to connect, make sure it works
+#{{ hostvars['virt-cl-drbd-0'].br0.address }}	virt-cl-drbd-0
+#{{ hostvars['virt-cl-drbd-1'].br0.address }}	virt-cl-drbd-1
+{{ hostvars['virt-cl-drbd-0'].eno1.address }}     virt-cl-drbd
+{{ hostvars['virt-cl-drbd-1'].eno1.address }}     virt-cl-drbd
+{{ hostvars['virt-cl-drbd-0'].eno1.address }}     virt-cl-drbd-data-0
+{{ hostvars['virt-cl-drbd-1'].eno1.address }}	virt-cl-drbd-data-1
+{{ hostvars['virt-cl-drbd-0'].ipmi.address }}	virt-cl-drbd-ipmi-0
+{{ hostvars['virt-cl-drbd-1'].ipmi.address }}	virt-cl-drbd-ipmi-1
+
+#These addresses need to be turned into variables later
+172.20.230.105	puppetmaster
 172.20.230.105	puppet
 172.20.230.67	awx
 172.20.230.86	ipam1
 172.20.230.98 	ipam2
 172.20.230.91	quartermaster
 172.20.230.100	jenkins
+
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
